@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { mainPageContext } from "./../../container/MainPage";
+import { context } from "../../provider/Provider";
 import { todoConstant } from "./../../common/constants/todoConstant";
 
 interface Props {}
 
 export const Input: React.FC<Props> = () => {
 	const [input, setInput] = useState<string>("");
-	const { dispatch } = useContext(mainPageContext);
+	const { dispatch } = useContext(context);
 	return (
 		<form
 			className=" mb-8 sm:mb-10"

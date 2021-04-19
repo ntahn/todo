@@ -1,10 +1,12 @@
 import "./App.css";
 import { MainPage } from "./container/MainPage";
+import { Provider } from "./provider/Provider";
+
 function App() {
 	return (
-		<div className="font-app-font">
+		<Provider>
 			<MainPage />
-		</div>
+		</Provider>
 	);
 }
 

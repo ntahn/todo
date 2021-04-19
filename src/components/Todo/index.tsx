@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { mainPageContext } from "../../container/MainPage";
+import { context } from "../../provider/Provider";
 import { todoConstant } from "./../../common/constants/todoConstant";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Todo: React.FC<Props> = ({ todo, completed, index, display }) => {
-	const { dispatch, todoState } = useContext(mainPageContext);
+	const { dispatch, todoState } = useContext(context);
 	const cssTodoText: string = " px-2 py-1 bg-white w-full text-left max-w-xl";
 	const cssTodoDiv: string = "flex transition mx-auto duration-500 max-w-lg";
 	let cssTodoClass: string = completed
