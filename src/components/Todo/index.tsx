@@ -6,14 +6,24 @@ interface Props {
 	todo: string;
 	completed: boolean;
 	index: number;
+	display: string;
 }
 
-export const Todo: React.FC<Props> = ({ todo, completed, index }) => {
+export const Todo: React.FC<Props> = ({ todo, completed, index, display }) => {
 	const { dispatch, todoState } = useContext(mainPageContext);
 	const cssTodoText: string = " px-2 py-1 bg-white w-full text-left max-w-xl";
-	const cssTodoDiv: string = " flex transition mx-auto duration-500 max-w-lg";
+	const cssTodoDiv: string = "flex transition mx-auto duration-500 max-w-lg";
+	let cssTodoClass: string = completed
+		? `opacity-60 ${cssTodoDiv}`
+		: cssTodoDiv;
+	if (
+		(completed && display === "uncompleted") ||
+		(!completed && display === "completed")
+	) {
+		cssTodoClass += " hidden";
+	}
 	return (
-		<div className={completed ? `opacity-60 ${cssTodoDiv}` : cssTodoDiv}>
+		<div className={cssTodoClass}>
 			<p className={completed ? `line-through ${cssTodoText}` : cssTodoText}>
 				{todo}
 			</p>

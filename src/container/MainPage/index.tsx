@@ -30,23 +30,10 @@ export const MainPage: React.FC<Props> = () => {
 
 	const renderTodos = () => {
 		if (todoState && todoState.length > 0) {
-			let displayArr = [...todoState];
-			switch (display) {
-				case "all":
-					break;
-				case "completed":
-					displayArr = todoState.filter((item) => item.completed);
-					break;
-				case "uncompleted":
-					displayArr = todoState.filter((item) => !item.completed);
-					break;
-				default:
-					break;
-			}
-
-			return displayArr.map((item, index) => {
+			return todoState.map((item, index) => {
 				return (
 					<Todo
+						display={display}
 						key={index}
 						index={index}
 						todo={item.todo}
