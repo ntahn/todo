@@ -12,7 +12,7 @@ export const Input: React.FC<Props> = () => {
 			className=" mb-8 sm:mb-10"
 			onSubmit={(e) => {
 				e.preventDefault();
-				if (input != "") {
+				if (input !== "") {
 					dispatch({ type: todoConstant.ADD_TODO, payload: input });
 				}
 
