@@ -20,8 +20,6 @@ export const MainPage: React.FC<Props> = () => {
 		localStorage.setItem("state", JSON.stringify(todoState));
 	}, [todoState]);
 
-	const list = todoState.map((item, index) => ({ ...item, index }));
-
 	return (
 		<div className="m-0 min-h-screen py-10 bg-gradient-to-b sm:text-lg from-yellow-300 to-red-300 text-center px-auto">
 			<h1 className=" font-extrabold text-4xl mb-6 sm:text-5xl sm:mb-8 md:mb-10">
@@ -32,9 +30,9 @@ export const MainPage: React.FC<Props> = () => {
 
 			<div className="space-y-2 w-3/5 mx-auto">
 				<Transition
-					items={list}
-					keys={(item: { index: number; todo: string; completed: boolean }) =>
-						item.index
+					items={todoState}
+					keys={(item: { id: string; todo: string; completed: boolean }) =>
+						item.id
 					}
 					from={{
 						opacity: 0,
@@ -46,15 +44,15 @@ export const MainPage: React.FC<Props> = () => {
 					}}
 					leave={{
 						opacity: 0,
-						delay: 100,
+						x: 100,
 					}}
 				>
 					{(style, item) => (
 						<animated.div style={style}>
 							<Todo
 								display={display}
-								key={item.index}
-								index={item.index}
+								key={item.id}
+								id={item.id}
 								todo={item.todo}
 								completed={item.completed}
 							/>

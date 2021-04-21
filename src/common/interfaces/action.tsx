@@ -1,4 +1,4 @@
 export interface Action {
 	type: string;
-	payload: number | string | null;
+	payload: string | null;
 }

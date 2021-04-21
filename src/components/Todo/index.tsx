@@ -5,12 +5,12 @@ import { todoConstant } from "./../../common/constants/todoConstant";
 interface Props {
 	todo: string;
 	completed: boolean;
-	index: number;
+	id: string;
 	display: string;
 }
 
-export const Todo: React.FC<Props> = ({ todo, completed, index, display }) => {
-	const { dispatch, todoState } = useContext(context);
+export const Todo: React.FC<Props> = ({ todo, completed, id, display }) => {
+	const { dispatch } = useContext(context);
 	const cssTodoText: string = " px-2 py-1 bg-white w-full text-left max-w-xl";
 	const cssTodoDiv: string = "flex transition mx-auto duration-500 max-w-lg";
 	let cssTodoClass: string = completed
@@ -31,9 +31,7 @@ export const Todo: React.FC<Props> = ({ todo, completed, index, display }) => {
 				className=" rounded-none focus-within:outline-none w-10  bg-green-400  "
 				type="button"
 				onClick={(e) => {
-					e.preventDefault();
-					console.log(todoState, index);
-					dispatch({ type: todoConstant.TOGGLE_TODO, payload: index });
+					dispatch({ type: todoConstant.TOGGLE_TODO, payload: id });
 				}}
 			>
 				<svg
@@ -55,7 +53,7 @@ export const Todo: React.FC<Props> = ({ todo, completed, index, display }) => {
 				type="button"
 				className="rounded-none  focus-within:outline-none w-10  bg-yellow-500 "
 				onClick={() => {
-					dispatch({ type: todoConstant.REMOVE_TODO, payload: index });
+					dispatch({ type: todoConstant.REMOVE_TODO, payload: id });
 				}}
 			>
 				<svg
