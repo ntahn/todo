@@ -3,8 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.remove {
-	transform: translateX(200px);
-	opacity: 0;
-}
